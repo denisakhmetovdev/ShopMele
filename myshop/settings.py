@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
     'django.contrib.humanize',
+    'payment.apps.PaymentConfig'
 ]
 
 MIDDLEWARE = [
@@ -127,6 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = Path(BASE_DIR, 'media')
@@ -142,3 +144,10 @@ CART_SESSION_ID = 'cart'
 
 # email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+# Stripe test_mode
+STRIPE_PUBLISHABLE_KEY = getenv('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = getenv('STRIPE_SECRET_KEY')
+STRIPE_API_VERSION = getenv('STRIPE_API_VERSION')
+STRIPE_WEBHOOK_SECRET = getenv('STRIPE_WEBHOOK_SECRET')
